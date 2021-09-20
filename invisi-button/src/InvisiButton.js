@@ -7,77 +7,78 @@ export class InvisiButton extends LitElement {
   static get styles() {
     return css`
       :host {
-        display inline-block;
-        --invisi-button-color: var(
-          --simple-colors-default-theme-accent-1,
-          white
-          );
-          --invisi-button-outline: var(
-            --simple-colors-default-theme-accent-12,
-            black
-          );
-          --invisi-button-bg-color-is-user-selected: var(
-            --simple-colors-default-theme-accent-10,
-            pink
-          );
-          --invisi-button-bg-color: var(
-            --simple-colors-default-theme-accent-7,
-            black
-          );
-          margin: 60px 0 0;
-        }
-        :hover
-        {
-          background-color: transparent;
-          color: black;
-          border: 2px solid var(--invisi-button-outline);
+        display: inline-block;
+        padding: 25px;
+        color: var(--invisi-button-text-color, #000);
+        --invisibuttonBackgroundColor: #000;
+        --invisibuttonTextColor: #ffffff;
+        --invisibuttonFont: 'Inter', sans-serif;
+        --disabledBackground: rgba(0, 0, 0, 0.4);
+        --buttonActive: #ffdada;
+      }
 
-        }
-        :focus
-        {
-          background-color: transparent;
-          color: black;
-          border: 2px solid var(--invisi-button-outline);
-          outline: transparent;
-        }
+      @media (prefers-color-scheme: light) {
+        --invisibuttonBackgroundColor: blue;
+      }
 
-        :host([hidden]) {
-          display: none;
-        }
-        :host([contenteditable]) a {
-          pointer-events: none;
-        }
-        :host([is-user-selected]) a {
-          background-color: var(--invisi-button-bg-color-is-user-selected);
-          outline: 1px solid var(--invisi-button-outline);
-        }
-        a {
-          display: block;
-          color: var(--invisi-button-color);
-          background-color: var(--invisi-button-bg-color);
-          transition: background 0.3s linear, border 0.3s linear,
-            border-radius 0.3s linear, box-shadow 0.3s linear;
-          text-decoration: none;
-          font-size: 1em;
-          border: 2px solid #000;
-          border-radius: 5px;
-          box-shadow: 0 6px 26px 0 rgba(0, 0, 0, 0.16);
-          padding: 16px 40px;
-          flex-grow: 0;
-          flex-shrink 0;
-          
-          font-family: Sans-serif;
-          font-weight: 500;
-          width: 130px;
-        }
-        a span {
-          display: flex;
-          justify-content: center;
-        }
-        a :hover{
-          border: transparent;
-        }
-        
+      @media (prefers-color-scheme: dark) {
+        --invisibuttonBackgroundColor: red;
+      }
+
+      button {
+        display: inline-block;
+        text-align: center;
+        color: var(--invisibuttonTextColor);
+        background-color: var(--invisibuttonBackgroundColor);
+        padding: 0.5rem 2rem;
+        border: 2px solid var(--invisibuttonBackgroundColor);
+        border-radius: 5px;
+        whitespace: nowrap;
+        font-family: var(--invisibuttonFont);
+        text-decoration: none;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+
+      button:hover {
+        color: var(--invisibuttonBackgroundColor);
+        background-color: transparent;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      button:focus {
+        color: var(--invisibuttonBackgroundColor);
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      button:disabled {
+        color: var(--invisibuttonTextColor);
+        background-color: var(--disabledBackground);
+        cursor: not-allowed;
+      }
+
+      button:active {
+        background-color: var(--buttonActive);
+      }
+
+      a {
+        font-family: var(--invisibuttonFont);
+        color: var(--invisibuttonTextColor);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--invisibuttonBackgroundColor);
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      a:focus {
+        color: var(--invisibuttonBackgroundColor);
+        background-color: transparent;
+        text-decoration: none;
+      }
     `;
   }
 
@@ -95,6 +96,7 @@ export class InvisiButton extends LitElement {
       editMode: {
         type: Boolean,
       },
+      buttonState: { type: Boolean },
     };
   }
 
@@ -108,11 +110,12 @@ export class InvisiButton extends LitElement {
   constructor() {
     super();
     this.link = 'https://teuxdeux.com/signup';
-    this.title = null;
+    this.title = '2134352';
+    this.buttonState = false;
     this.accentColor = 'green';
     if (this.querySelector('a')) {
       this.link = this.querySelector('a').getAttribute('href');
-      this.title = this.querySelector('a').innerText;
+      this.title = this.querySelector('button').value;
       this.innerHTML = null;
     }
   }
@@ -126,15 +129,37 @@ export class InvisiButton extends LitElement {
     }
   }
 
+  // Toggles the disabled state of button if checkbox is checked
+  __toggleDisabled() {
+    if (this.buttonState === false) {
+      this.buttonState = true;
+    } else {
+      this.buttonState = false;
+    }
+  }
+
   render() {
-    return html` <a
-      href="${this.link}"
-      role="button"
-      part="invisi-button-link"
-      @click=${this._clickCard}
-      ?contenteditable="${this.editMode}"
-    >
-      <span><span id="title">${this.title}</span><slot></slot></span>
-    </a>`;
+    return html`
+      <a
+        tabindex="-1"
+        href="${this.link}"
+        target="_blank"
+        rel="noopener"
+        role="button"
+        part="invisi-button-link"
+        @click=${this._clickCard}
+        ?contenteditable="${this.editMode}"
+      >
+        <button .disabled="${this.buttonState}">${this.title}</button>
+      </a>
+      <br />
+      <label for="disableCheck">Check to disable button</label>
+      <input
+        id="disableCheck"
+        type="checkbox"
+        name="disableCheck"
+        @click=${this.__toggleDisabled}
+      />
+    `;
   }
 }
