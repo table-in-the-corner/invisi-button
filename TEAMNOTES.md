@@ -7,3 +7,9 @@
 
 * Noelle and Nick communicated over group chat on Friday 9/17 and Sunday 9/19 for around one hour as they coordinated research on how to support each of the 4 button states, as well as with troubleshooting regarding accessibility navigation. 
 * We collaborated over Zoom on 9/19 for one hour to share our progress and discuss specific CSS implementations for our hover styling. We also worked to resolve our merge conflicts. We also communicated with Nicole and Bailey to troubleshoot and discuss how we each designed our implementation to best reflect the model teuxdeux CTA button.
+
+* 9/21: Today, we realized that we could make our button implementation more extensible while having cleaner code and better accessibility handling. 
+* Our next steps are to:
+1. Remove disabled checkbox in component, instead build this into demo and Storybook support as a component attribute.
+2. Resolve accesibility errors identified by Storybook.
+3. Implement support for multiple color variations
