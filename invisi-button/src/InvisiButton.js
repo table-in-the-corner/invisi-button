@@ -1,4 +1,6 @@
 import { LitElement, html, css } from 'lit';
+import '@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js';
+import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
 // import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
 // import { activeStateBehavior } from "@lrnwebcomponents/utils/lib/activeStateBehavior.js";
 // import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
@@ -97,6 +99,8 @@ export class InvisiButton extends LitElement {
         type: Boolean,
       },
       buttonState: { type: Boolean },
+      icon: { type: String },
+      disabled: { type: Boolean, reflect: true },
     };
   }
 
@@ -113,6 +117,7 @@ export class InvisiButton extends LitElement {
     this.title = '2134352';
     this.buttonState = false;
     this.accentColor = 'green';
+    this.icon = true;
     if (this.querySelector('a')) {
       this.link = this.querySelector('a').getAttribute('href');
       this.title = this.querySelector('button').value;
@@ -129,15 +134,6 @@ export class InvisiButton extends LitElement {
     }
   }
 
-  // Toggles the disabled state of button if checkbox is checked
-  __toggleDisabled() {
-    if (this.buttonState === false) {
-      this.buttonState = true;
-    } else {
-      this.buttonState = false;
-    }
-  }
-
   render() {
     return html`
       <a
@@ -150,16 +146,16 @@ export class InvisiButton extends LitElement {
         @click=${this._clickCard}
         ?contenteditable="${this.editMode}"
       >
-        <button .disabled="${this.buttonState}">${this.title}</button>
+        <button .disabled="${this.disabled}">
+          ${this.title}
+          ${!this.disabled
+            ? html`<simple-icon-lite
+                icon="hardware:keyboard-arrow-down"
+              ></simple-icon-lite>`
+            : html``}
+        </button>
       </a>
       <br />
-      <label for="disableCheck">Check to disable button</label>
-      <input
-        id="disableCheck"
-        type="checkbox"
-        name="disableCheck"
-        @click=${this.__toggleDisabled}
-      />
     `;
   }
 }
