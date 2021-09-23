@@ -10,20 +10,13 @@
 </head>
 <body>
   <div id="demo"></div>
-
+  <!-- <simple-icon-lite icon="save"></simple-icon-lite> -->
+  <!---progressive enhancement by having the link in there, back up incase can still ship you code but less code
+  so you can still do the functionality-->
+  <invisi-button id="icon" title="Join now for free"><a href= "https://teuxdeux.com/signup"></a></invisi-button>
   <script type="module">
     import { html, render } from 'lit';
     import '../invisi-button.js';
-
-    const title = '';
-    render(
-      html`
-        <invisi-button .title=${title}>
-          Join now for free
-        </invisi-button>
-      `,
-      document.querySelector('#demo')
-    );
   </script>
 </body>
 </html>
