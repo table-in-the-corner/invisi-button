@@ -6,17 +6,22 @@ export default {
   component: 'invisi-button',
   argTypes: {
     title: { control: 'text' },
-    counter: { control: 'number' },
+    disabled: { control: 'boolean' },
     textColor: { control: 'color' },
   },
 };
 
-function Template({ title = 'Hello world', counter = 5, textColor, slot }) {
+function Template({
+  title = 'Hello world',
+  disabled = false,
+  textColor,
+  slot,
+}) {
   return html`
     <invisi-button
-      style="--invisi-button-text-color: ${textColor || 'black'}"
+      style="--invisi-button-text-color: ${textColor || 'white'}"
       .title=${title}
-      .counter=${counter}
+      .disabled=${disabled}
     >
       ${slot}
     </invisi-button>
@@ -28,11 +33,6 @@ export const Regular = Template.bind({});
 export const CustomTitle = Template.bind({});
 CustomTitle.args = {
   title: 'My title',
-};
-
-export const CustomCounter = Template.bind({});
-CustomCounter.args = {
-  counter: 123456,
 };
 
 export const SlottedContent = Template.bind({});
