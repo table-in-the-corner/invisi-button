@@ -128,14 +128,15 @@ export class InvisiButton extends LitElement {
   // <!-- ${this.document.getElementById("icon").addEventListener("mouseover") ? html`<simple-icon-lite icon="add-circle-outline"></simple-icon-lite>
   // </simple-icon-lite>`:html`<simple-icon-lite icon="add-circle"></simple-icon-lite>`} -->
   render() {
-    return html` <a href="${this.link}" tabindex="-1"
-      ><button id="icon" ?disabled="${this.disabled}">
+    return html` <a href="${this.link}" tabindex="-1">
+      <button id="icon" ?disabled="${this.disabled}">
         ${this.icon
           ? html`<simple-icon-lite
               icon="add-circle-outline"
             ></simple-icon-lite>`
           : ``}
         ${this.title}
+
         <slot></slot>
       </button>
     </a>`;
