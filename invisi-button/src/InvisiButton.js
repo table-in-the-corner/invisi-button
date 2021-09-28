@@ -47,13 +47,14 @@ export class InvisiButton extends LitElement {
         text-decoration: none;
         transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
       }
-
+      button:focus,
       button:hover {
         color: var(--invisi-button-background-color);
         background-color: transparent;
         border-color: var(--invisi-button-background-color);
         text-decoration: none;
         cursor: pointer;
+        outline: none;
       }
 
       button:hover #caret-icon {
@@ -66,11 +67,11 @@ export class InvisiButton extends LitElement {
         color: #000;
       } */
 
-      button:focus {
+      /* button:focus {
         color: var(--invisi-button-background-color);
         background-color: transparent;
         text-decoration: none;
-      }
+      } */
 
       button:disabled {
         color: var(--invisi-button-text-color);
