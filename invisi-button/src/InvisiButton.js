@@ -43,7 +43,6 @@ export class InvisiButton extends LitElement {
         padding: 0.5rem 2rem;
         border: 2px solid var(--invisi-button-background-color);
         border-radius: 5px;
-        whitespace: nowrap;
         font-family: var(--invisi-button-font);
         text-decoration: none;
         transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -137,7 +136,7 @@ export class InvisiButton extends LitElement {
     this.title = 'Join now for free';
     this.buttonState = false;
     this.accentColor = 'green';
-    this.icon = true;
+    this.icon = 'hardware:keyboard-arrow-down';
     this.dark = false;
     this.addEventListener('pointerenter', this._handlePointer);
   }
@@ -167,7 +166,7 @@ export class InvisiButton extends LitElement {
           ${this.title}
           ${!this.disabled
             ? html`<simple-icon-lite
-                icon="hardware:keyboard-arrow-down"
+                icon="${this.icon}"
                 id="caret-icon"
               ></simple-icon-lite>`
             : html``}
