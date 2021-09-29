@@ -54,9 +54,8 @@ export class InvisiButton extends LitElement {
         border-color: var(--invisi-button-background-color);
         text-decoration: none;
         cursor: pointer;
-        outline: none;
       }
-
+      button:focus #caret-icon,
       button:hover #caret-icon {
         transform: rotate(-90deg);
         transition: all 0.2s ease;
