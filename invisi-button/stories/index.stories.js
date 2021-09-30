@@ -12,7 +12,7 @@ export default {
 };
 
 function Template({
-  title = 'Hello world',
+  title = 'Join now for free',
   disabled = false,
   textColor,
   slot,
@@ -21,7 +21,7 @@ function Template({
     <invisi-button
       style="--invisi-button-text-color: ${textColor || 'white'}"
       .title=${title}
-      .disabled=${disabled}
+      ?disabled="${disabled}"
     >
       ${slot}
     </invisi-button>
@@ -30,15 +30,15 @@ function Template({
 
 export const Regular = Template.bind({});
 
-export const CustomTitle = Template.bind({});
-CustomTitle.args = {
+export const Disabled = Template.bind({});
+Disabled.args = {
   title: 'My title',
 };
 
-export const SlottedContent = Template.bind({});
-SlottedContent.args = {
-  slot: html`<p>Slotted content</p>`,
+export const darkTheme = Template.bind({});
+darkTheme.args = {
+  title: 'Join now for free',
 };
-SlottedContent.argTypes = {
+darkTheme.argTypes = {
   slot: { table: { disable: true } },
 };

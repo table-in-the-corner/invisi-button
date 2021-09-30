@@ -1,9 +1,9 @@
 {
-  "name": "invisi-button",
+  "name": "@table-in-the-corner/invisi-button",
   "description": "Webcomponent invisi-button following open-wc recommendations",
   "license": "MIT",
   "author": "invisi-button",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "module": "index.js",
   "scripts": {
@@ -32,6 +32,10 @@
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
     "prettier": "^2.4.1"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
   },
   "customElements": "custom-elements.json",
   "eslintConfig": {
