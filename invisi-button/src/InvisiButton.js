@@ -150,6 +150,11 @@ export class InvisiButton extends LitElement {
     }
   }
 
+  _playSound() {
+    let audio = new Audio(new URL(`./buttonSound.mp3`, import.meta.url).href);
+    audio.play();
+  }
+  
   render() {
     return html`
       <a
@@ -159,8 +164,9 @@ export class InvisiButton extends LitElement {
         rel="noopener noreferrer"
         role="button"
         part="invisi-button-link"
-        @click=${this._clickCard}
+        @click=${this._clickCard, this._playSound}
         ?contenteditable="${this.editMode}"
+        
       >
         <button .disabled="${this.disabled}" id="button-id">
           ${this.title}
