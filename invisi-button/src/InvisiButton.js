@@ -120,6 +120,7 @@ export class InvisiButton extends LitElement {
       icon: { type: String },
       disabled: { type: Boolean, reflect: true },
       dark: { type: Boolean, reflect: true },
+      soundclip: { type: String },
     };
   }
 
@@ -139,6 +140,7 @@ export class InvisiButton extends LitElement {
     this.icon = 'hardware:keyboard-arrow-down';
     this.dark = false;
     this.addEventListener('pointerenter', this._handlePointer);
+    this.soundclip = `./buttonSound.mp3`;
   }
 
   _clickCard(e) {
@@ -151,10 +153,10 @@ export class InvisiButton extends LitElement {
   }
 
   _playSound() {
-    let audio = new Audio(new URL(`./buttonSound.mp3`, import.meta.url).href);
+    const audio = new Audio(new URL(this.soundclip, import.meta.url).href);
     audio.play();
   }
-  
+
   render() {
     return html`
       <a
@@ -164,9 +166,8 @@ export class InvisiButton extends LitElement {
         rel="noopener noreferrer"
         role="button"
         part="invisi-button-link"
-        @click=${this._clickCard, this._playSound}
+        @click=${this._playSound}
         ?contenteditable="${this.editMode}"
-        
       >
         <button .disabled="${this.disabled}" id="button-id">
           ${this.title}
