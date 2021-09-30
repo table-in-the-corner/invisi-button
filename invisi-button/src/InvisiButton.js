@@ -27,6 +27,10 @@ export class InvisiButton extends LitElement {
         --invisi-button-active-background-color: #c4acac;
       }
 
+      :host([dark]) :disabled {
+        --invisi-button-text-color: #ffffff;
+      }
+
       /* @media (prefers-color-scheme: light) {
         --invisibuttonBackgroundColor: blue;
       }
