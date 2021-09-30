@@ -8,6 +8,8 @@ export default {
     title: { control: 'text' },
     disabled: { control: 'boolean' },
     textColor: { control: 'color' },
+    icon: { control: 'text' },
+    dark: { control: 'boolean' },
   },
 };
 
@@ -16,29 +18,19 @@ function Template({
   disabled = false,
   textColor,
   slot,
+  icon = 'hardware:keyboard-arrow-down',
+  dark = false,
 }) {
   return html`
     <invisi-button
       style="--invisi-button-text-color: ${textColor || 'white'}"
       .title=${title}
       ?disabled="${disabled}"
+      .icon="${icon}"
+      .dark="${dark}"
     >
       ${slot}
     </invisi-button>
   `;
 }
-
 export const Regular = Template.bind({});
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  title: 'My title',
-};
-
-export const darkTheme = Template.bind({});
-darkTheme.args = {
-  title: 'Join now for free',
-};
-darkTheme.argTypes = {
-  slot: { table: { disable: true } },
-};

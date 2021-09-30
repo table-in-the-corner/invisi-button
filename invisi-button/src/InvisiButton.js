@@ -117,7 +117,7 @@ export class InvisiButton extends LitElement {
         type: Boolean,
       },
       buttonState: { type: Boolean },
-      icon: { type: String },
+      icon: { type: String, reflect: true },
       disabled: { type: Boolean, reflect: true },
       dark: { type: Boolean, reflect: true },
       soundclip: { type: String },
