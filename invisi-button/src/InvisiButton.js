@@ -120,7 +120,6 @@ export class InvisiButton extends LitElement {
       editMode: {
         type: Boolean,
       },
-      buttonState: { type: Boolean },
       icon: { type: String, reflect: true },
       disabled: { type: Boolean, reflect: true },
       dark: { type: Boolean, reflect: true },
@@ -139,11 +138,8 @@ export class InvisiButton extends LitElement {
     super();
     this.link = 'https://teuxdeux.com/signup';
     this.title = 'Join now for free';
-    this.buttonState = false;
-    this.accentColor = 'green';
     this.icon = 'hardware:keyboard-arrow-down';
     this.dark = false;
-    this.addEventListener('pointerenter', this._handlePointer);
     this.soundclip = `./buttonSound.mp3`;
   }
 

@@ -1,5 +1,7 @@
 # Noelle and Nick Team notes
 
+Original Button Design Reference: www.teuxdeux.com
+
 ## Week of 9/13:
 
 * Nick: Lead Dev and Accessibility
@@ -48,3 +50,13 @@
       >
     ```
 
+
+* 10/1 Teamnotes:
+  * Noelle implemented the bonus sound effection option for this project, creating an audible click effect when the button is pressed.
+  * Noelle also worked on Storybook support by setting up interactive support for changing both the button icon as well as toggling between light mode (dark button) and dark mode (light button).
+  * Noelle also created the npm organization for our 4 group members.
+  * Nick was responsible for overall clean-up of the button component, finishing Storyboard support for our shared properties and states, and publishing the component to npm.
+  * Nick stepped through all project requirements, and made sure to test the accessibility and button states to assure the project was ready to be published.
+
+
+  * We chose not to use an EventListener in our constructor because it was simpler to target the button states directly in our CSS.
