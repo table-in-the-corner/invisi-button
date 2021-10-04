@@ -5,14 +5,14 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 ## Installation
 
 ```bash
-npm i invisi-button
+npm i @table-in-the-corner/invisi-button
 ```
 
 ## Usage
 
 ```html
 <script type="module">
-  import 'invisi-button/invisi-button.js';
+  import '@table-in-the-corner/invisi-button/invisi-button';
 </script>
 
 <invisi-button></invisi-button>
