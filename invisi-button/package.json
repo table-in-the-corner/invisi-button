@@ -3,7 +3,7 @@
   "description": "Webcomponent invisi-button following open-wc recommendations",
   "license": "MIT",
   "author": "invisi-button",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "module": "index.js",
   "scripts": {
